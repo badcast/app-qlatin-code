@@ -1,0 +1,80 @@
+﻿<Window x:Class="QCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:local="clr-namespace:QCode"
+        mc:Ignorable="d"
+        Title="QCode - Qazaq unicode" Height="768" Width="1024" WindowStartupLocation="CenterScreen"  UseLayoutRounding="False" BorderThickness="0" MinWidth="498" MinHeight="350" Left="0" Top="0" Loaded="Window_Loaded" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" WindowState="Maximized" WindowStyle="SingleBorderWindow" Closed="Window_Closed">
+
+    <Grid>
+        <!--
+        <Border x:Name="TopLayout" Height="50" VerticalAlignment="Top">
+            <Border.Background>
+                <SolidColorBrush Color="#007FFF"/>
+            </Border.Background>
+            <Grid>
+                <Label x:Name="_windowTitle" Content="QCode Qazaqstan" VerticalContentAlignment="Center" FontFamily="Consolas"/>
+                <Button x:Name="_frameClose" Background="Red" Foreground="White" FontSize="20" HorizontalAlignment="Right" Width="50" Click="_frameClose_Click">x</Button>
+                <Button x:Name="_frameHide" HorizontalAlignment="Right" Width="50" FontSize="20" Margin="0,0,50,0" Click="_frameHide_Click">-</Button>
+            </Grid>
+        </Border>-->
+        <TabControl x:Name="CenterLayout" ItemContainerStyle="{StaticResource _style_itemContainer}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,31">
+            <TabControl.Background>
+                <SolidColorBrush Color="{DynamicResource __c_def_backgorund}"/>
+            </TabControl.Background>
+            <TabItem Header="Транслятор">
+                <Grid Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="223*"/>
+                        <ColumnDefinition Width="219*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="219*"/>
+                        <ColumnDefinition Width="225*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--CENTER TOP-->
+                    <Label x:Name="_lOne"  Style="{StaticResource _style_label}" Content="Label" HorizontalContentAlignment="Center" Margin="3,0,0,0" VerticalAlignment="Top" Height="40" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"/>
+                    <Button x:Name="_reverseTo" Content="Инвертировать" Height="40" VerticalAlignment="Top" Click="_reverseTo_Click" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1"/>
+                    <Label x:Name="_ltwo" Style="{StaticResource _style_label}" BorderBrush="Black" Content="Label" HorizontalContentAlignment="Center" Margin="0,0,2,0" VerticalAlignment="Top" Height="40" Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Border Margin="0,40,0,10" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1">
+                        <Border.Background>
+                            <SolidColorBrush Color="{StaticResource __c_def_centerBodyColor}" Opacity="0.5"/>
+                        </Border.Background>
+                    </Border>
+                    <TextBox x:Name="editOne" Style="{StaticResource _def_textEdit}" Margin="3,40,0,0" Text="" IsHitTestVisible="True" AllowDrop="True" TextChanged="editOne_TextChanged" MaxLength="501" Grid.ColumnSpan="2" Height="159" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Background="{DynamicResource brush_def_button_minimize_hover}"/>
+                    <TextBox x:Name="editTwo" Style="{StaticResource _def_textEdit}" Margin="0,40,2,0" TextWrapping="Wrap" Text="" IsHitTestVisible="True" Grid.Column="6" TextChanged="editTwo_TextChanged" MaxLength="501" Height="159" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource brush_def_button_minimize_hover}"/>
+                    <Button x:Name="_butSave01" Content="Сохранить в текстовый документ" Margin="5,204,3,0" Grid.ColumnSpan="2" Height="36" VerticalAlignment="Top" Grid.Column="1" Click="_butSave01_Click" Grid.Row="1"/>
+                    <Button x:Name="_butSave02" Content="Сохранить в текстовый документ" Margin="5,204,5,0" Height="36" VerticalAlignment="Top" Grid.Column="6" Click="_butSave02_Click" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Border CornerRadius="50" x:Name="_info" Visibility="Visible"  Background="{DynamicResource brush_def_button}"  Grid.ColumnSpan="5" Margin="10,56,10,243" Grid.Row="1" Grid.Column="2">
+                        <Grid>
+                            <Image Source="/QCode;component/Resources/sign-error-icon.png" Margin="10,10,10,165" OpacityMask="{x:Null}"/>
+                            <Label Content="Длина ограничено до 500 символов" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,119,0,0"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Первод с кириллицы в латинский" VerticalAlignment="Top">
+                <Grid>
+                    <Label FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="55" VerticalAlignment="Top" Margin="0,35,0,0">Для начало нажмите "Начать перевод"</Label>
+                    <Button Margin="302,95,323,0" Click="Button_Click" Height="55" VerticalAlignment="Top">Начать перевод</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Перевод с латинского в кириллицу" VerticalAlignment="Top">
+                <Grid>
+                    <Label FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="55" VerticalAlignment="Top" Margin="0,35,0,0">Для начало нажмите "Начать перевод"</Label>
+                    <Button x:Name="_ToCyrillic" Margin="302,95,323,0" Height="55" VerticalAlignment="Top" Click="_ToCyrillic_Click">Начать перевод</Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label x:Name="footerString" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Height="31" FontSize="10">Copyright</Label>
+    </Grid>
+</Window>
