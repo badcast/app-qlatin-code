@@ -1,4 +1,5 @@
-﻿#define _SUPPORT
+//если у вашего ОС установлена Microsoft Office 2007 +, то данный метод будет работать иначе нужно затереть SUPPORT 
+#define SUPPORT
 
 using System;
 using System.Collections.Generic;
